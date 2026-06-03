@@ -76,7 +76,7 @@ css_customizado <- "
 "
 
 ui <- dashboardPage(
-  dashboardHeader(title = "SWOT Cruzada-PDI"),
+  dashboardHeader(title = "SWOT Cruzada - PDI27-31"),
   dashboardSidebar(disable = TRUE),
   dashboardBody(
     tags$head(tags$style(HTML(css_customizado))), 
@@ -84,9 +84,18 @@ ui <- dashboardPage(
     fluidRow(
       box(
         title = "⚡ Painel de Avaliação Estratégica", width = 12, status = "primary", solidHeader = TRUE,
-        p("Selecione o impacto diretamente nos blocos de notas de 0 a 5. O bloco ativo receberá um destaque de cor forte. Vá até a última aba para visualizar o gráfico consolidado em tempo real!"),
-        p("A escala na nota é a seguinte: 0 - Nenhum, 1 - Muito baixo, 2 - Baixo, 3 - Moderado, 4 - Alto, 5 - Muito alto ")
-        )
+        h3("Olá! Chegou a hora de avaliar a relação entre os itens de nossa Matriz SWOT."),
+        h4 ("Abaixo, analise o impacto e a relevância de cada cruzamento, atribuindo uma nota de 0 a 5. Ao final você terá uma visão consolidada do seu posicionamento estratégico."),
+        HTML("<strong>Critérios de Pontuação (0 a 5)</strong><br>
+     <strong>0 – Sem impacto / Irrelevante:</strong> O fator interno não tem nenhuma relação com o fator externo. O cruzamento não gera nenhuma ação útil.<br>
+     <strong>1 – Impacto muito baixo:</strong> A relação existe, mas é quase imperceptível ou irrelevante para o futuro do negócio.<br>
+     <strong>2 – Impacto baixo:</strong> Há uma conexão fraca. A força ajuda pouco na oportunidade, ou a fraqueza sofre pouca influência da ameaça.<br>
+     <strong>3 – Impacto moderado:</strong> Relação média. O cruzamento exige atenção, mas não é uma prioridade imediata de investimento ou correção.<br>
+     <strong>4 – Impacto alto:</strong> Conexão direta e forte. Ação altamente recomendada, pois gera grande vantagem competitiva ou mitiga um risco claro.<br>
+     <strong>5 – Impacto muito alto / Crítico:</strong> Relação vital. O cruzamento é crucial para a sobrevivência ou para o crescimento imediato da empresa (prioridade máxima)")
+        
+      )
+        
     ),
     
     tabBox(
@@ -304,7 +313,7 @@ server <- function(input, output, session) {
     
     tagList(
       h4("Postura Indicada:", style = "font-weight: bold;"),
-      p(quadrante, style = "font-size: 14px; color: #2c3e50;"),
+      p(quadrante, style = "font-size: 26px; color: #2c3e50;"),
       hr(),
       p(tags$b("Pontuação Ambiente Interno (X): "), round(eixo_x, 2)),
       p(tags$b("Pontuação Ambiente Externo (Y): "), round(eixo_y, 2))

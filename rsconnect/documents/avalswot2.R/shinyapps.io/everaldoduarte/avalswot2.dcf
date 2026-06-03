@@ -1,0 +1,13 @@
+name: avalswot2
+title: avalswot2
+username: everaldoduarte
+account: everaldoduarte
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17455238
+bundleId: 12075133
+url: https://everaldoduarte.shinyapps.io/avalswot2/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|documentos/metodo_calculo.html|metodo_calculo.html|metodo_calculo.Rmd

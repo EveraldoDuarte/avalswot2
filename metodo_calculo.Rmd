@@ -1,0 +1,83 @@
+---
+title: "Metodologia de Cálculo do Posicionamento Estratégico na Matriz TOWS"
+author: "Análise Estratégica"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Metodologia de Cálculo TOWS (Escala 0 a 5)
+
+Este documento apresenta o método quantitativo para determinar o posicionamento estratégico de uma organização utilizando o cruzamento da matriz SWOT-TOWS com escala de impacto de 0 a 5.
+
+## 1. Escala de Impacto
+
+Os cruzamentos entre as variáveis internas e externas recebem notas de **0 a 5**, que medem a intensidade da relação:
+
+*   **0:** Sem impacto / Sem relação
+*   **1:** Impacto Muito Baixo
+*   **2:** Impacto Baixo
+*   **3:** Impacto Moderado
+*   **4:** Impacto Alto
+*   **5:** Impacto Muito Alto
+
+---
+
+## 2. Estrutura das Matrizes de Cruzamento
+
+A análise é dividida em quatro quadrantes estratégicos. Cada quadrante gera uma matriz de impacto onde:
+*   $i$ representa a variável interna (Força ou Fraqueza).
+*   $j$ representa a variável externa (Oportunidade ou Ameaça).
+*   $n$ é o total de variáveis internas do grupo.
+*   $m$ é o total de variáveis externas do grupo.
+
+### Quadrantes de Cruzamento:
+1. **Matriz SO (Alavancagem):** Cruzamento de Forças ($F_i$) com Oportunidades ($O_j$). Nota: $SO_{ij}$
+2. **Matriz ST (Defesa):** Cruzamento de Forças ($F_i$) com Ameaças ($T_j$). Nota: $ST_{ij}$
+3. **Matriz WO (Debilidade):** Cruzamento de Fraquezas ($W_i$) com Oportunidades ($O_j$). Nota: $WO_{ij}$
+4. **Matriz WT (Vulnerabilidade):** Cruzamento de Fraquezas ($W_i$) com Ameaças ($T_j$). Nota: $WT_{ij}$
+
+---
+
+## 3. Modelo Matemático do Cálculo
+
+O cálculo do posicionamento consiste em três etapas: a soma dos impactos por quadrante, o cálculo da média ponderada (ou índice de relevância) e a geração das coordenadas do vetor de posicionamento.
+
+### Passo 1: Cálculo da Força Bruta do Quadrante ($S$)
+Soma-se a pontuação de todos os cruzamentos realizados dentro de cada quadrante específico.
+
+$$S_{SO} = \sum_{i=1}^{n} \sum_{j=1}^{m} SO_{ij}$$
+$$S_{ST} = \sum_{i=1}^{n} \sum_{j=1}^{m} ST_{ij}$$
+$$S_{WO} = \sum_{i=1}^{n} \sum_{j=1}^{m} WO_{ij}$$
+$$S_{WT} = \sum_{i=1}^{n} \sum_{j=1}^{m} WT_{ij}$$
+
+### Passo 2: Cálculo do Índice Médio do Quadrante ($I$)
+Como o número de variáveis ($n$ e $m$) pode variar entre os quadrantes, calcula-se o impacto médio dividindo a soma bruta pelo total de cruzamentos possíveis ($n \times m$). Isso normaliza os dados na escala de 0 a 5.
+
+$$I_{SO} = \frac{S_{SO}}{n_F \times m_O}$$
+$$I_{ST} = \frac{S_{ST}}{n_F \times m_T}$$
+$$I_{WO} = \frac{S_{WO}}{n_W \times m_O}$$
+$$I_{WT} = \frac{S_{WT}}{n_W \times m_T}$$
+
+### Passo 3: Determinação das Coordenadas no Plano Cartesiano
+Para plotar o posicionamento estratégico em um gráfico de quatro quadrantes, consolidamos as forças internas no eixo **X** e os fatores externos no eixo **Y**.
+
+*   **Eixo X (Fatores Internos):** Contrapõe a capacidade de resposta das Forças contra o peso das Fraquezas.
+    $$X = (I_{SO} + I_{ST}) - (I_{WO} + I_{WT})$$
+
+*   **Eixo Y (Fatores Externos):** Contrapõe a tração das Oportunidades contra a pressão das Ameaças.
+    $$Y = (I_{SO} + I_{WO}) - (I_{ST} + I_{WT})$$
+
+---
+
+## 4. Diagnóstico do Posicionamento Estratégico
+
+O par ordenado $(X, Y)$ indicará em qual quadrante a empresa deve concentrar seus investimentos e postura de mercado:
+
+*   **Quadrante I ($X > 0, Y > 0$): Postura de Ofensiva / Desenvolvimento**
+    *   *Foco:* Usar as forças internas para maximizar as oportunidades de mercado.
+*   **Quadrante II ($X < 0, Y > 0$): Postura de Confronto / Crescimento**
+    *   *Foco:* Minimizar as fraquezas internas aproveitando as oportunidades externas.
+*   **Quadrante III ($X > 0, Y < 0$): Postura de Defesa / Manutenção**
+    *   *Foco:* Usar as forças internas para blindar o negócio contra as ameaças externas.
+*   **Quadrante IV ($X < 0, Y < 0$): Postura de Sobrevivência**
+    *   *Foco:* Reduzir fraquezas de forma urgente para evitar danos catastróficos vindos das ameaças.
